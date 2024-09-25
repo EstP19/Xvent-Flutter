@@ -25,19 +25,3 @@ class _RecoverState extends State<Recover> {
     );
   }
 }
-
-class Contenido extends StatelessWidget {
-  const Contenido({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Página de Registro'),
-      ),
-      body: const Center(
-        child: Text('Formulario de Registro'),
-      ),
-    );
-  }
-}
