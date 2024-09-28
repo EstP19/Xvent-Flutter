@@ -9,12 +9,12 @@ class Logo extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: Column(children: [
           const SizedBox(
-            height: 10,
+            height: 70,
           ),
           Container(
             color: Colors.green,
-            width: 150,
-            height: 85,
+            width: 300,
+            height: 150,
           ),
           const SizedBox(
             height: 10,

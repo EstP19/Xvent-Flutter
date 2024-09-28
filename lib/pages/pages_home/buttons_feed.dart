@@ -3,8 +3,6 @@ import 'package:trabajo/pages/pages_home/pagesbuttons/addition.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/calendar.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/data.dart';
 
-/// Flutter code sample for [BottomNavigationBar].
-
 class ButtonsFeed extends StatefulWidget {
   const ButtonsFeed({super.key});
 
