@@ -13,7 +13,7 @@ class _AddClientState extends State<AddClient> {
   int _selectedAdd = 0;
 
   final List<Widget> _widgetAdd = <Widget>[
-    const Client(),
+    const Customers(),
     const Product(),
   ];
 
