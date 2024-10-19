@@ -3,8 +3,11 @@ import 'package:trabajo/pages/pages_home/pagesbuttons/pages_addition/product_cla
 
 class ShowProducts extends StatelessWidget {
   final List<ProductS> products;
+  final Function(ProductS)
+      onSelectProduct; // Función para manejar la selección de un cliente
 
-  const ShowProducts({super.key, required this.products});
+  const ShowProducts(
+      {super.key, required this.products, required this.onSelectProduct});
 
   @override
   Widget build(BuildContext context) {

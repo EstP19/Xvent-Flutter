@@ -12,7 +12,12 @@ class Product extends StatefulWidget {
 }
 
 class _ProductState extends State<Product> {
-  final List<ProductS> _products = [];
+  final List<ProductS> _products = [
+    ProductS(name: 'Cancha 1', price: '70000'),
+    ProductS(name: 'Cancha 2', price: '60000'),
+    ProductS(name: 'Cancha 3', price: '80000'),
+    ProductS(name: 'Cancha 4', price: '90000')
+  ];
   String _searchQuery = ''; // Variable para almacenar la búsqueda
 
   void _addProduct(ProductS product) {
@@ -41,9 +46,11 @@ class _ProductState extends State<Product> {
               ProductsSearch(onSearch: _updateSearchQuery), // Pasar el callback
               const SizedBox(height: 10),
               Expanded(
-                child: ShowProducts(
-                    products: filteredProducts), // Mostrar productos filtrados
-              ),
+                  child: ShowProducts(
+                products: filteredProducts,
+                onSelectProduct: (selectedProduct) {},
+              ) // Mostrar productos filtrados
+                  ),
             ],
           ),
           Positioned(

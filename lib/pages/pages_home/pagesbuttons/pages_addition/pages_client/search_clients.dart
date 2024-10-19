@@ -22,7 +22,8 @@ class _ClientSearchState extends State<ClientSearch> {
       keyboardType: TextInputType.text,
       decoration: const InputDecoration(
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
         hintText: 'Buscar usuarios...',
       ),
     );

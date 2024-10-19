@@ -3,8 +3,14 @@ import 'package:trabajo/pages/pages_home/pagesbuttons/pages_addition/client_clas
 
 class ShowClients extends StatelessWidget {
   final List<Client> client;
+  final Function(Client)
+      onSelectClient; // Función para manejar la selección de un cliente
 
-  const ShowClients({super.key, required this.client});
+  const ShowClients({
+    super.key,
+    required this.client,
+    required this.onSelectClient, // Agrega el parámetro
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class ShowClients extends StatelessWidget {
           ? ListView.builder(
               itemCount: client.length,
               itemBuilder: (context, index) {
-                final ShowClientsInWindows = client[index];
+                final showClientsInWindows = client[index];
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: Padding(
@@ -33,15 +39,16 @@ class ShowClients extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(ShowClientsInWindows.name,
+                              Text(showClientsInWindows.name,
                                   style: const TextStyle(fontSize: 25)),
-                              Text('\$${ShowClientsInWindows.cedula}',
+                              Text(showClientsInWindows.cedula,
                                   style: const TextStyle(fontSize: 18)),
-                              Text('\$${ShowClientsInWindows.phone}',
+                              Text(showClientsInWindows.phone,
                                   style: const TextStyle(fontSize: 18)),
                             ],
                           ),
                         ),
+                        // Botón para seleccionar cliente
                       ],
                     ),
                   ),

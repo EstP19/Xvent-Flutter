@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobkit_calendar/mobkit_calendar.dart';
+import 'package:trabajo/pages/pages_home/pagesbuttons/events.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/pages_calendar/header_calendar.dart';
-
 import 'pages_calendar/onpopup.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -48,7 +48,7 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(25))),
         popUpOpacity: true,
-        animateDuration: 500,
+        animateDuration: 100,
         verticalPadding: 30,
         popupSpace: 10,
         popupHeight: MediaQuery.of(context).size.height * 0.6,
@@ -59,13 +59,12 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
         isVisibleHeaderWidget:
             mobkitCalendarViewType == MobkitCalendarViewType.monthly ||
                 mobkitCalendarViewType == MobkitCalendarViewType.agenda,
-        isVisibleTitleWidget: true,
         isVisibleMonthBar: false,
         isVisibleYearBar: false,
         isVisibleWeekDaysBar: true,
         weekDaysStyle: const TextStyle(fontSize: 14, color: Colors.black),
       ),
-      weekDaysBarBorderColor: Colors.transparent,
+      weekDaysBarBorderColor: Colors.black,
       locale: "es",
       disableOffDays: true,
       disableWeekendsDays: false,
@@ -84,12 +83,9 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
     super.initState();
   }
 
-  List<MobkitCalendarAppointmentModel> eventList = [];
-
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat.yMMMMd('es').format(_currentDate);
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
@@ -133,6 +129,7 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
             controller: _tabController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
+              //Mes
               MobkitCalendarWidget(
                 headerWidget: (List<MobkitCalendarAppointmentModel> models,
                         DateTime datetime) =>
@@ -165,18 +162,19 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
                   appointmentList: eventList,
                 ),
               ),
+              //Semana
               MobkitCalendarWidget(
                 minDate: DateTime(1800),
-                key: UniqueKey(),
                 config: getConfig(MobkitCalendarViewType.weekly),
-                dateRangeChanged: (datetime) => null,
+                key: UniqueKey(),
+                dateRangeChanged: (dateTime) => null,
                 weeklyViewWidget:
                     (Map<DateTime, List<MobkitCalendarAppointmentModel>> val) =>
                         Expanded(
                   child: ListView.builder(
                     itemCount: val.length,
                     itemBuilder: (BuildContext context, int index) {
-                      DateTime dateTime = val.keys.elementAt(index);
+                      DateTime dateTime = val.keys.elementAt((index));
                       return val[dateTime] != null
                           ? Padding(
                               padding: const EdgeInsets.all(12),
@@ -260,27 +258,26 @@ class _CalendarioState extends State<Calendario> with TickerProviderStateMixin {
                   appointmentList: eventList,
                 ),
               ),
+              //Día
               MobkitCalendarWidget(
                 minDate: DateTime(1800),
                 key: UniqueKey(),
                 config: getConfig(MobkitCalendarViewType.daily),
                 dateRangeChanged: (datetime) => null,
-                onSelectionChange: (List<MobkitCalendarAppointmentModel> models,
-                        DateTime date) =>
-                    null,
+                onSelectionChange: (models, date) => null,
                 eventTap: (model) => null,
-                onPopupWidget: (List<MobkitCalendarAppointmentModel> models,
-                        DateTime datetime) =>
-                    OnPopupWidget(
+                onPopupWidget: (models, datetime) => OnPopupWidget(
                   datetime: datetime,
                   models: models,
                 ),
                 onDateChanged: (DateTime datetime) => null,
                 mobkitCalendarController: MobkitCalendarController(
                   viewType: MobkitCalendarViewType.daily,
-                  appointmentList: eventList,
+                  appointmentList:
+                      eventList, // Verifica que esta lista tenga datos
                 ),
               ),
+              //Agenda
               MobkitCalendarWidget(
                 minDate: DateTime(1800),
                 key: UniqueKey(),

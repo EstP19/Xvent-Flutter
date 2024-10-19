@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/addition.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/calendar.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/data.dart';
+import 'package:trabajo/pages/pages_home/pagesbuttons/events.dart';
 
 class ButtonsFeed extends StatefulWidget {
   const ButtonsFeed({super.key});
@@ -13,9 +14,10 @@ class ButtonsFeed extends StatefulWidget {
 class _ButtonsFeedState extends State<ButtonsFeed> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
+    const MyCalendarEvent(),
     const Calendario(),
     const AddClient(),
-    const DataClient()
+    const Statistics() // Cambié _ChartApp por ChartApp (sin el "_")
   ];
 
   void _onItemTapped(int index) {
@@ -31,7 +33,12 @@ class _ButtonsFeedState extends State<ButtonsFeed> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event_repeat_outlined),
+            label: 'Eventos',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
             label: 'Calendario',
