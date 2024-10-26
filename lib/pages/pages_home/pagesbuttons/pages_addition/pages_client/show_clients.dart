@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:trabajo/pages/pages_home/pagesbuttons/pages_addition/client_class.dart';
 
 class ShowClients extends StatelessWidget {
-  final List<Client> client;
+  final List<Client>
+      clients; // Cambié el nombre de 'client' a 'clients' para mayor claridad
   final Function(Client)
       onSelectClient; // Función para manejar la selección de un cliente
 
   const ShowClients({
     super.key,
-    required this.client,
-    required this.onSelectClient, // Agrega el parámetro
+    required this.clients, // Asegúrate de que el nombre coincida
+    required this.onSelectClient,
+    required List<Client> client,
   });
 
   @override
@@ -23,11 +25,12 @@ class ShowClients extends StatelessWidget {
           width: 2.0,
         ),
       ),
-      child: client.isNotEmpty
+      child: clients.isNotEmpty
           ? ListView.builder(
-              itemCount: client.length,
+              itemCount: clients.length,
               itemBuilder: (context, index) {
-                final showClientsInWindows = client[index];
+                final clientToShow = clients[
+                    index]; // Cambié el nombre a 'clientToShow' para mayor claridad
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: Padding(
@@ -39,16 +42,23 @@ class ShowClients extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(showClientsInWindows.name,
+                              Text(clientToShow.name,
                                   style: const TextStyle(fontSize: 25)),
-                              Text(showClientsInWindows.cedula,
+                              Text(clientToShow.cedula,
                                   style: const TextStyle(fontSize: 18)),
-                              Text(showClientsInWindows.phone,
+                              Text(clientToShow.phone,
                                   style: const TextStyle(fontSize: 18)),
                             ],
                           ),
                         ),
-                        // Botón para seleccionar cliente
+                        IconButton(
+                          icon: const Icon(Icons
+                              .select_all), // Cambia el ícono según tus preferencias
+                          onPressed: () {
+                            // Llama a la función onSelectClient con el cliente seleccionado
+                            onSelectClient(clientToShow);
+                          },
+                        ),
                       ],
                     ),
                   ),

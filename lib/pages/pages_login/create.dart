@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabajo/pages/registro.dart';
+import 'package:trabajo/pages/pages_login/registro.dart';
 
 class NuevaCuenta extends StatelessWidget {
   const NuevaCuenta({super.key});

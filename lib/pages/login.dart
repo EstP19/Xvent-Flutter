@@ -3,6 +3,8 @@ import 'package:trabajo/pages/pages_login/logo.dart';
 import 'package:trabajo/pages/pages_login/content.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routename = '/login'; // Definición de la ruta
+
   const LoginPage({super.key});
 
   @override
@@ -16,8 +18,20 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Fondo(),
-          Logo(),
-          Cuerpo(),
+          Positioned(
+              top: 10,
+              right: 0,
+              left: 0,
+              child: Center(
+                child: Logo(),
+              )),
+          Positioned(
+              top: 90,
+              right: 0,
+              left: 0,
+              child: Center(
+                child: Cuerpo(),
+              )),
         ],
       ),
     );

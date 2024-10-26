@@ -38,10 +38,16 @@ class _CustomersState extends State<Customers> {
       builder: (context) {
         return AddClients(onAddClients: (newClient) {
           _addClients(newClient);
-          // Cierra el diálogo después de agregar
+          Navigator.of(context).pop(); // Cierra el diálogo después de agregar
         });
       },
     );
+  }
+
+  void _onSelectClient(Client selectedClient) {
+    // Aquí puedes manejar la selección del cliente
+    // Por ejemplo, podrías navegar a una página de detalles o edición
+    print('Cliente seleccionado: ${selectedClient.name}');
   }
 
   @override
@@ -60,9 +66,10 @@ class _CustomersState extends State<Customers> {
               const SizedBox(height: 10),
               Expanded(
                 child: ShowClients(
-                  client: filteredClients,
-                  onSelectClient: (selectedClient) {},
-                ), // Mostrar productos filtrados
+                  clients: filteredClients,
+                  onSelectClient: _onSelectClient,
+                  client: [], // Maneja la selección de clientes
+                ), // Mostrar clientes filtrados
               ),
             ],
           ),

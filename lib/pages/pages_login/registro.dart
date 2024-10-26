@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabajo/pages/pages_registro/cuerpo_registro.dart';
+import 'package:trabajo/pages/pages_login/pages_registro/cuerpo_registro.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

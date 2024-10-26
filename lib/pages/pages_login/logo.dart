@@ -6,19 +6,22 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-        alignment: Alignment.topCenter,
-        child: Column(children: [
-          const SizedBox(
-            height: 70,
-          ),
-          Container(
-            color: Colors.green,
-            width: 300,
+      alignment: Alignment.topCenter,
+      child: Column(
+        children: [
+          SizedBox(
+            width: 150,
             height: 150,
+            child: Image.asset(
+              'assets/imglogo.png', // Ruta de la imagen
+              fit: BoxFit.cover, // Ajuste de la imagen
+            ),
           ),
           const SizedBox(
             height: 10,
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

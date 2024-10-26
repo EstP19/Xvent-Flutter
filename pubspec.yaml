@@ -42,6 +42,8 @@ dependencies:
   mobkit_calendar: ^1.0.0
   intl: ^0.19.0
   syncfusion_flutter_charts: ^27.1.53
+  supabase_flutter: ^2.8.0
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +56,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+supabase_flutter: ^2.8.0
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -64,11 +68,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/imglogo.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

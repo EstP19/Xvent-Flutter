@@ -26,12 +26,16 @@ class _AddEventsState extends State<AddEvents> {
       _selectedProductName; // Variable para almacenar el Producto seleccionado
   final List<Client> _clients = [
     Client(name: 'Juan Pérez', cedula: '123456789', phone: '555-1234'),
-    Client(name: 'Ana Gómez', cedula: '987654321', phone: '555-5678'),
+    Client(name: 'María Gómez', cedula: '987654321', phone: '555-5678'),
+    Client(name: 'Pedro Sánchez', cedula: '123456767', phone: '555-1267'),
+    Client(name: 'Carlos Pérez', cedula: '987654345', phone: '555-5692'),
   ];
 
   final List<ProductS> _products = [
-    ProductS(name: 'Cancha1', price: '70000'),
-    ProductS(name: 'Cancha2', price: '60000')
+    ProductS(name: 'Cancha 1', price: '70000'),
+    ProductS(name: 'Cancha 2', price: '60000'),
+    ProductS(name: 'Cancha 3', price: '80000'),
+    ProductS(name: 'Cancha 4', price: '90000')
   ];
   final String _searchQuery = ''; // Variable para almacenar la búsqueda
 
@@ -244,29 +248,28 @@ class _AddEventsState extends State<AddEvents> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () => _selectStartDate(context),
-                          child: const Text('Seleccionar fecha de Inicio'),
+                          child: const Text('Fecha de Inicio'),
                         ),
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () => _selectEndDate(context),
-                          child:
-                              const Text('Seleccionar fecha de finalización'),
+                          child: const Text('Fecha Final'),
                         ),
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () => _selectStartTime(context),
-                          child: const Text('Seleccionar hora de inicio'),
+                          child: const Text('Hora de Inicio'),
                         ),
                       ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () => _selectEndTime(context),
-                          child: const Text('Seleccionar hora de finalización'),
+                          child: const Text('Hora Final'),
                         ),
                       ),
                       // Botón para seleccionar cliente
@@ -288,7 +291,7 @@ class _AddEventsState extends State<AddEvents> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: _addAppointment,
-                          child: const Text('Añadir Evento a la Lista'),
+                          child: const Text('Añadir Evento'),
                         ),
                       ),
                       SizedBox(

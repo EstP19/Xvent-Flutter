@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trabajo/pages/pages_registro/datos_registro.dart';
+import 'package:trabajo/pages/pages_login/pages_registro/datos_registro.dart';
 
 class Contenido extends StatelessWidget {
   const Contenido({super.key});
